@@ -7,7 +7,7 @@ import com.ipartek.pojo.Perro;
 
 public class AppPerrera {
 
-	// Constantes
+	// Constantes primer menu
 
 	final static String OPCION_1 = "1";
 	final static String OPCION_2 = "2";
@@ -15,10 +15,19 @@ public class AppPerrera {
 	final static String OPCION_4 = "4";
 	final static String SALIR = "s";
 
+	// Constantes menu modificar perro
+
+	final static String NOMBRE = "1";
+	final static String RAZA = "2";
+	final static String PESO = "3";
+	final static String HISTORIA = "4";
+	final static String SALIR_MODIFICAR = "s";
+
 	// variables globales para esta Clase
 	static Scanner sc = null;
 	static ArrayList<Perro> lista = new ArrayList<Perro>();
 	static String opcion = ""; // opcion seleccionada en el menu por el usuario
+	static String opcionModificar = "";
 
 	public static void main(String[] args) {
 
@@ -49,7 +58,15 @@ public class AppPerrera {
 				darDeBaja();
 				break;
 
+			case OPCION_4:
+
+				modificarPerro();
+				break;
+
 			default:
+
+				System.out.println("La opcion seleccionada no existe o es erronea");
+
 				break;
 			}
 
@@ -60,6 +77,66 @@ public class AppPerrera {
 		System.out.println("***********  ADIOS, nos vemos pronto   **************");
 
 	}// main
+
+	private static void modificarPerro() {
+
+		System.out.println("Nombre del perro que quieres modificar:");
+		String nombre = sc.nextLine();
+
+		for (Perro perro : lista) {
+
+			if (perro.getNombre().equalsIgnoreCase(nombre)) {
+
+				do {
+
+					menuModificar();
+
+					switch (opcionModificar) {
+					case NOMBRE:
+
+						System.out.println("Introduce el nombre:");
+						String nuevoNombre = sc.nextLine();
+						perro.setNombre(nuevoNombre);
+
+						break;
+
+					case RAZA:
+
+						System.out.println("Introduce la raza:");
+						String nuevaRaza = sc.nextLine();
+						perro.setRaza(nuevaRaza);
+
+						break;
+
+					case PESO:
+
+						System.out.println("Introduce el nombre:");
+						double nuevoPesoe = Double.parseDouble(sc.nextLine());
+						perro.setPeso(nuevoPesoe);
+
+						break;
+
+					case HISTORIA:
+
+						System.out.println("Introduce la historia:");
+						String nuevaHistoria = sc.nextLine();
+						perro.setHistoria(nuevaHistoria);
+
+						break;
+
+					default:
+
+						System.out.println("La opcion seleccionada no existe o es erronea");
+						break;
+					}
+
+				} while (!SALIR_MODIFICAR.equalsIgnoreCase(opcionModificar));
+
+			}
+
+		}
+
+	}
 
 	private static void darDeBaja() {
 
@@ -133,18 +210,29 @@ public class AppPerrera {
 		System.out.println(OPCION_1 + ".- Listar todos los perros");
 		System.out.println(OPCION_2 + ".- Crear un perro");
 		System.out.println(OPCION_3 + ".- Dar de baja un Perro");
-		System.out.println(" etc etc ...");
-		System.out.println(" ");
+		System.out.println(OPCION_4 + ".- Modificar datos de un perro");
 		System.out.println(SALIR + " - Salir");
 		System.out.println("************************************");
 
 		System.out.println("\n Selecciona una opcion del menu:");
-		try {
-			
-			opcion = sc.nextLine();
-			
-		}catch()
-		
+
+		opcion = sc.nextLine();
+
+	}
+
+	private static void menuModificar() {
+
+		System.out.println("************************************");
+		System.out.println(NOMBRE + ".-Modificar nombre ");
+		System.out.println(RAZA + ".- Modificar raza ");
+		System.out.println(PESO + ".-Modificar peso ");
+		System.out.println(HISTORIA + ".- Modificar historia");
+		System.out.println(SALIR_MODIFICAR + " - Salir");
+		System.out.println("************************************");
+
+		System.out.println("\n Selecciona una opcion del menu:");
+
+		opcionModificar = sc.nextLine();
 
 	}
 
