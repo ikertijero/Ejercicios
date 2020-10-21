@@ -1,0 +1,6 @@
+#Archivos ignorados de eclipse
+
+/bin/
+/.classpath
+/.project
+/.settings
