@@ -24,6 +24,7 @@ public class AppPerrera {
 	final static String SALIR_MODIFICAR = "s";
 
 	// variables globales para esta Clase
+
 	static Scanner sc = null;
 	static ArrayList<Perro> lista = new ArrayList<Perro>();
 	static String opcion = ""; // opcion seleccionada en el menu por el usuario
@@ -35,6 +36,7 @@ public class AppPerrera {
 
 		incializarDatos();
 
+		// bucle que muestra un menu con diferentes opciones
 		do {
 
 			System.out.println("***********  APP  PERRERA   **************");
@@ -78,6 +80,7 @@ public class AppPerrera {
 
 	}// main
 
+	// metodo que muestra un menu para modificar los datos de un Perro
 	private static void modificarPerro() {
 
 		System.out.println("Nombre del perro que quieres modificar:");
@@ -138,6 +141,7 @@ public class AppPerrera {
 
 	}
 
+	// metodo que elimina un Perro de nuestra lista
 	private static void darDeBaja() {
 
 		System.out.println("Nombre del perro que quieres borrar:");
@@ -157,6 +161,7 @@ public class AppPerrera {
 
 	}
 
+	// metodo que sirve para crer un nuevo perro y añadirlo a la lista
 	private static void crearPerro() {
 
 		System.out.println("Nombre del perro:");
@@ -177,6 +182,7 @@ public class AppPerrera {
 
 	}
 
+	// metodo para visualizar la lista de Perros
 	private static void listar() {
 
 		for (Perro perro : lista) {
@@ -220,6 +226,7 @@ public class AppPerrera {
 
 	}
 
+	// metodo que muestra el menu con las opciones que podemos modificar
 	private static void menuModificar() {
 
 		System.out.println("************************************");
