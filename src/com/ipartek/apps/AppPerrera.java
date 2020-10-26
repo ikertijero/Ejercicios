@@ -3,8 +3,21 @@ package com.ipartek.apps;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.ipartek.modelo.PerroDAOArrayList;
 import com.ipartek.pojo.Perro;
 
+/**
+ * App para de una perrera que contiene un menu con diferentes opcines.
+ * <ul>
+ * <li>Listar datos</li>
+ * <li>Crear un Perro</li>
+ * <li>Borrar Perro lista</li>
+ * <li>Modifiar Perro lista</li>
+ * </ul>
+ * 
+ * @author iker tijero
+ * 
+ */
 public class AppPerrera {
 
 	// Constantes primer menu
@@ -13,6 +26,7 @@ public class AppPerrera {
 	final static String OPCION_2 = "2";
 	final static String OPCION_3 = "3";
 	final static String OPCION_4 = "4";
+	final static String OPCION_5 = "5";
 	final static String SALIR = "s";
 
 	// Constantes menu modificar perro
@@ -21,6 +35,7 @@ public class AppPerrera {
 	final static String RAZA = "2";
 	final static String PESO = "3";
 	final static String HISTORIA = "4";
+	final static String VACUNA = "5";
 	final static String SALIR_MODIFICAR = "s";
 
 	// variables globales para esta Clase
@@ -29,14 +44,14 @@ public class AppPerrera {
 	static ArrayList<Perro> lista = new ArrayList<Perro>();
 	static String opcion = ""; // opcion seleccionada en el menu por el usuario
 	static String opcionModificar = "";
+	static private PerroDAOArrayList modelo = new PerroDAOArrayList();
 
 	public static void main(String[] args) {
 
 		sc = new Scanner(System.in);
+		boolean salir = true;
 
-		incializarDatos();
-
-		// bucle que muestra un menu con diferentes opciones
+		// Bucle que muestra un menu con diferentes opciones
 		do {
 
 			System.out.println("***********  APP  PERRERA   **************");
@@ -51,7 +66,12 @@ public class AppPerrera {
 				break;
 			case OPCION_2:
 
-				crearPerro();
+				try {
+					crearPerro();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 				break;
 
@@ -65,6 +85,17 @@ public class AppPerrera {
 				modificarPerro();
 				break;
 
+			case OPCION_5:
+
+				perroVacunados();
+				break;
+
+			case SALIR:
+
+				salir = false;
+				System.out.println("***********  ADIOS, nos vemos pronto   **************");
+				break;
+
 			default:
 
 				System.out.println("La opcion seleccionada no existe o es erronea");
@@ -72,19 +103,36 @@ public class AppPerrera {
 				break;
 			}
 
-		} while (!SALIR.equalsIgnoreCase(opcion));
+		} while (salir);
 
 		sc.close();
 
-		System.out.println("***********  ADIOS, nos vemos pronto   **************");
-
 	}// main
+
+	private static void perroVacunados() {
+
+		for (Perro perro : lista) {
+
+			if (perro.isVacunado()) {
+
+				System.out.println(String.format("%s [%s] %sKg", perro.getNombre(), perro.getRaza(), perro.getPeso()));
+
+			} else {
+				// TODO controlar este else, que solo se muestre si no hay perros vacunados
+				System.out.println("No hay perros vacunados");
+				break;
+			}
+
+		}
+
+	}
 
 	// metodo que muestra un menu para modificar los datos de un Perro
 	private static void modificarPerro() {
 
 		System.out.println("Nombre del perro que quieres modificar:");
 		String nombre = sc.nextLine();
+		boolean salir = true;
 
 		for (Perro perro : lista) {
 
@@ -127,13 +175,25 @@ public class AppPerrera {
 
 						break;
 
+					case VACUNA:
+
+						perro.setVacunado(true);
+
+						break;
+
+					case SALIR_MODIFICAR:
+
+						salir = false;
+
+						break;
+
 					default:
 
 						System.out.println("La opcion seleccionada no existe o es erronea");
 						break;
 					}
 
-				} while (!SALIR_MODIFICAR.equalsIgnoreCase(opcionModificar));
+				} while (salir);
 
 			}
 
@@ -162,7 +222,7 @@ public class AppPerrera {
 	}
 
 	// metodo que sirve para crer un nuevo perro y añadirlo a la lista
-	private static void crearPerro() {
+	private static void crearPerro() throws Exception {
 
 		System.out.println("Nombre del perro:");
 		String nombre = sc.nextLine();
@@ -178,12 +238,14 @@ public class AppPerrera {
 		p.setRaza(raza);
 		p.setPeso(peso);
 
-		lista.add(p);
+		modelo.crear(p);
 
 	}
 
 	// metodo para visualizar la lista de Perros
 	private static void listar() {
+
+		ArrayList<Perro> perros = modelo.listar();
 
 		for (Perro perro : lista) {
 			// formato para mostrar solo nombre y raza
@@ -196,14 +258,14 @@ public class AppPerrera {
 	 * Inicializar el ArrayList para simular que existen perros.<br>
 	 * En un futuro nos conectaremos a una bbdd
 	 */
-	private static void incializarDatos() {
 
-		lista.add(new Perro("Bubba"));
-		lista.add(new Perro("Laika"));
-		lista.add(new Perro("Rintintin"));
-		lista.add(new Perro("goffy"));
-
-	}
+	/*
+	 * private static void incializarDatos() { lista.add(new Perro("Bubba"));
+	 * lista.add(new Perro("Laika")); lista.add(new Perro("Rintintin"));
+	 * lista.add(new Perro("goffy"));
+	 *
+	 * }
+	 */
 
 	/**
 	 * Se encraga de pintar las pociones del menu.<br>
@@ -217,6 +279,7 @@ public class AppPerrera {
 		System.out.println(OPCION_2 + ".- Crear un perro");
 		System.out.println(OPCION_3 + ".- Dar de baja un Perro");
 		System.out.println(OPCION_4 + ".- Modificar datos de un perro");
+		System.out.println(OPCION_5 + ".- Listar todos los perros vacunados");
 		System.out.println(SALIR + " - Salir");
 		System.out.println("************************************");
 
@@ -234,6 +297,7 @@ public class AppPerrera {
 		System.out.println(RAZA + ".- Modificar raza ");
 		System.out.println(PESO + ".-Modificar peso ");
 		System.out.println(HISTORIA + ".- Modificar historia");
+		System.out.println(VACUNA + ".- Vacunar perro");
 		System.out.println(SALIR_MODIFICAR + " - Salir");
 		System.out.println("************************************");
 

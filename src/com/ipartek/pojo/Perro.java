@@ -4,6 +4,8 @@ public class Perro {
 
 	// Atributos
 
+	private int id;
+
 	private String nombre;
 	private String raza;
 	private double peso;
@@ -15,6 +17,7 @@ public class Perro {
 	public Perro() {
 		super();
 
+		this.id = 0;
 		this.nombre = "sin nombre";
 		this.raza = "cruze";
 		this.peso = 0;
@@ -31,6 +34,14 @@ public class Perro {
 	}
 
 	// Getters y setters
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNombre() {
 		return nombre;
