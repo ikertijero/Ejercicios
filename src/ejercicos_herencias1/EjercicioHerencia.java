@@ -46,7 +46,7 @@ public class EjercicioHerencia {
 
 		for (Electrodomestico elec : lstElectrodomesticos) {
 
-			System.out.println(elec.toString());
+			System.out.println(((Television) elec).getPulgadas() + elec.getNombre());
 
 		}
 
@@ -63,14 +63,14 @@ public class EjercicioHerencia {
 			System.out.println("Introduce la marca:");
 			tp.setNombre(sc.nextLine());
 
-			System.out.println("Precio TV:");
-			tp.setPrecio(Double.parseDouble(sc.nextLine()));
+			// System.out.println("Precio TV:");
+			// tp.setPrecio(Double.parseDouble(sc.nextLine()));
 
 			System.out.println("Introduce las pulgadas:");
 			tp.setPulgadas(Integer.parseInt(sc.nextLine()));
 
-			System.out.println("Tipo de pantalla:");
-			tp.setTipoPantalla(sc.nextLine());
+			// System.out.println("Tipo de pantalla:");
+			// tp.setTipoPantalla(sc.nextLine());
 
 			lstElectrodomesticos.add(tp);
 		}

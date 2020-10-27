@@ -9,6 +9,12 @@ public class Television extends Electrodomestico {
 
 	}
 
+	public Television(String nombre, double precio, int pulgadas) {
+		super(nombre, precio);
+		this.pulgadas = pulgadas;
+
+	}
+
 	public int getPulgadas() {
 		return pulgadas;
 	}
