@@ -1,6 +1,7 @@
 package ejercicios_listas;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Crear una lista que contenga las cuarenta cartas de una baraja. Para crear
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class Ejercicio4 {
 
 	final static int VALOR_LIMITE_CARTAS = 10;
+	final static int CANT_CARTAS = 40;
 
 	static public ArrayList<Carta> lstCartas = new ArrayList<Carta>();
 
@@ -25,9 +27,8 @@ public class Ejercicio4 {
 		crearBaraja();
 
 		// barajarBaraja();
-
+		barajarBaraja2();
 		visualizarBaraja();
-
 	}
 
 	private static void visualizarBaraja() {
@@ -40,7 +41,45 @@ public class Ejercicio4 {
 
 	}
 
+	private static void barajarBaraja2() {
+
+		Random rnd = new Random();
+
+		for (int i = 0; i < lstCartas.size(); i++) {
+
+			int azar = rnd.nextInt(lstCartas.size());
+			Carta c = lstCartas.remove(azar);
+
+			lstCartas.add(c);
+		}
+
+	}
+
 	private static void barajarBaraja() {
+
+		ArrayList<Integer> numAleatorios = new ArrayList<Integer>();
+
+		int num = (int) Math.floor(Math.random() * (39 - 0 + 1) + (0));
+
+		for (int i = 0; i < CANT_CARTAS; i++) {
+
+			if (!numAleatorios.contains(num)) {
+
+				numAleatorios.add(num);
+
+			} else {
+
+				i--;
+			}
+			num = (int) Math.floor(Math.random() * (39 - 0 + 1) + (0));
+		}
+
+		for (int i = 0; i < lstCartas.size(); i++) {
+
+			int numRand = numAleatorios.get(i);
+			System.out.println(lstCartas.get(numRand));
+
+		}
 
 	}
 
