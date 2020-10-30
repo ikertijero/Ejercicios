@@ -33,6 +33,14 @@ public class Perro {
 
 	}
 
+	public Perro(String nombre, String raza, double peso) {
+		super();
+
+		this.nombre = nombre;
+		this.raza = raza;
+		this.peso = peso;
+	}
+
 	// Getters y setters
 
 	public int getId() {
