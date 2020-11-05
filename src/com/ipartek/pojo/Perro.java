@@ -5,7 +5,6 @@ public class Perro {
 	// Atributos
 
 	private int id;
-
 	private String nombre;
 	private String raza;
 	private double peso;
@@ -39,6 +38,11 @@ public class Perro {
 		this.nombre = nombre;
 		this.raza = raza;
 		this.peso = peso;
+	}
+
+	public Perro(int id, String nombre) {
+		this.nombre = nombre;
+		this.id = id;
 	}
 
 	// Getters y setters
@@ -97,7 +101,7 @@ public class Perro {
 
 	@Override
 	public String toString() {
-		return "Nombre=" + nombre + ", Raza=" + raza;
+		return "Nombre=" + nombre + ", Raza=" + raza + ", Peso=" + peso;
 	}
 
 }

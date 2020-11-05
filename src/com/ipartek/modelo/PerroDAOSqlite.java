@@ -11,6 +11,22 @@ import com.ipartek.pojo.Perro;
 public class PerroDAOSqlite implements PerroDao {
 
 	private static final String PATH = "ddbb/perrera.db";
+	private static PerroDAOSqlite INSTANCE = null; //
+
+	// Private constructor suppresses
+	private PerroDAOSqlite() {
+		super();
+	}
+
+	// metdod que devuelve la intancia del objeto - Su intención consiste en
+	// garantizar que una clase solo tenga una instancia y proporcionar un punto de
+	// acceso global a ella.
+	public synchronized static PerroDAOSqlite getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new PerroDAOSqlite();
+		}
+		return INSTANCE;
+	}
 
 	@Override
 	public ArrayList<Perro> listar() {

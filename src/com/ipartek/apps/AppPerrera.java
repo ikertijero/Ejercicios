@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.ipartek.modelo.PerroDAOArrayList;
+import com.ipartek.modelo.PerroDao;
 import com.ipartek.pojo.Perro;
 
 /**
@@ -44,7 +45,12 @@ public class AppPerrera {
 	static ArrayList<Perro> lista = new ArrayList<Perro>();
 	static String opcion = ""; // opcion seleccionada en el menu por el usuario
 	static String opcionModificar = "";
-	static private PerroDAOArrayList modelo = new PerroDAOArrayList();
+
+	// static private PerroDAOSqlite modelo = new PerroDAOSqlite();
+	static private PerroDao modelo = PerroDAOArrayList.getInstance();// utilizando syngleton, Su intención consiste
+																		// en, garantizar que una clase solo tenga una
+																		// instancia y proporcionar un punto de acceso
+																		// global a ella.
 
 	public static void main(String[] args) {
 
@@ -60,14 +66,19 @@ public class AppPerrera {
 
 			switch (opcion) {
 			case OPCION_1:
+				for (Perro p : modelo.listar()) {
 
-				listar();
+					System.out.println(p);
+				}
 
 				break;
 			case OPCION_2:
 
 				try {
-					crearPerro();
+
+					Perro p = crearPerro();
+
+					modelo.crear(p);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -201,6 +212,52 @@ public class AppPerrera {
 
 	}
 
+	private static void eliminar() {
+
+		boolean flag = true;
+		int id = 0;
+		Perro pEliminar = null;
+
+		// buscar perro por id
+		do {
+			System.out.println("Dime el ID del perro para eliminar:");
+			id = Integer.parseInt(sc.nextLine());
+
+			pEliminar = modelo.recuperar(id);
+			if (pEliminar == null) {
+				System.out.println("*Lo sentimos pero no existe ese perro");
+			} else {
+				flag = false;
+			}
+
+		} while (flag);
+
+		// pedir confirmacion de nombre para eliminar
+		flag = true;
+
+		do {
+			System.out.printf("Por favor escribe [%s] para eliminar \n", pEliminar.getNombre());
+			String nombre = sc.nextLine();
+
+			if (pEliminar.getNombre().equalsIgnoreCase(nombre)) {
+
+				try {
+					modelo.eliminar(id);
+					flag = false;
+					System.out.println("Hemos dado de baja al perro");
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			} else {
+				System.out.println("**No coincide el nombre**");
+			}
+
+		} while (flag);
+
+	}
+
 	// metodo que elimina un Perro de nuestra lista
 	private static void darDeBaja() {
 
@@ -222,23 +279,38 @@ public class AppPerrera {
 	}
 
 	// metodo que sirve para crer un nuevo perro y añadirlo a la lista
-	private static void crearPerro() throws Exception {
+	private static Perro crearPerro() throws Exception {
 
-		System.out.println("Nombre del perro:");
+		// TODO gestionar Exceptions
+
+		// pedido datos por consola
+		System.out.println("Dime el nombre:");
 		String nombre = sc.nextLine();
 
-		System.out.println("Raza del perro:");
+		// TODO si no introducimos la raza la deja vacia y deberia ser cruce
+		System.out.println("raza (si no la sabes es 'cruce'):");
 		String raza = sc.nextLine();
 
-		System.out.println("Peso del perro:");
-		double peso = Double.parseDouble(sc.nextLine());
+		if (raza.isEmpty()) {
 
-		Perro p = new Perro();
-		p.setNombre(nombre);
-		p.setRaza(raza);
-		p.setPeso(peso);
+			raza = "cruze";
+		}
 
-		modelo.crear(p);
+		System.out.println("Peso en Kg:");
+		float peso = Float.parseFloat(sc.nextLine());
+
+		System.out.println("¿ Esta vacunado ?  [Si/No]");
+		boolean isVacunado = ("s".equalsIgnoreCase(sc.nextLine())) ? true : false;
+
+		System.out.println("Cuentame su historia (no es obligatorio):");
+		String historia = sc.nextLine();
+
+		// crear un Perro y setear valores
+		Perro p = new Perro(nombre, raza, peso);
+		p.setVacunado(isVacunado);
+		p.setHistoria(historia);
+
+		return p;
 
 	}
 
