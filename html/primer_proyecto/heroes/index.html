@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarvelDCpedia</title>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
     
     <header>
-        <img src="imagenes/banner.jpg" width="1920" height="320"/>
+      
         <h1>MarvelDCpedia</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="heroes.html">Heroes</a></li>
-                <li><a href="villanos.html">Villanos</a></li>
-                <li><a href="comics.html">Comics</a></li>
-                <li><a href="acercade.html">Acerca de</a></li>
-            </ul>
-        </nav>
+       
     </header>
-    
+    <nav id="header-nav">
+        <ul class="container-nav">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="heroes.html">Heroes</a></li>
+            <li><a href="villanos.html">Villanos</a></li>
+            <li><a href="comics.html">Comics</a></li>
+            <li><a href="acercade.html">Acerca de</a></li>
+        </ul>
+    </nav>
     <section>
         <article>
             <h2>Presentacion</h2>
@@ -40,27 +41,21 @@
     </section>
     
     <footer>
-        <table>
-            <tbody>
-                <tr>
-                    <td>
-                        <ul>
-                            <li><a href="#">Cookies</a></li>
-                            <li><a href="#">Aspectos legales</a></li>
-                            <li><a href="#">Contacto</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <img src="imagenes/marvel.png" width="100" height="100"/>
-                        <img src="imagenes/DC.png" width="100" height="100"/>
-                    </td>
-                    <td>
-                        <a href="https://blogdesuperheroes.es/">Blog Super Heroes</a>
-                        <a href="https://comicritico.blogspot.com/">Comicritico</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <section> 
+            <ul>
+                <li><a href="#">Cookies</a></li>
+                <li><a href="#">Aspectos legales</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </section>
+        <section>
+            <img class="logo" src="imagenes/marvel.png" width="100" height="100"/>
+            <img class="logo" src="imagenes/DC.png" width="100" height="100"/>
+        </section>
+        <section>
+            <a href="https://blogdesuperheroes.es/">Blog Super Heroes</a>
+            <a href="https://comicritico.blogspot.com/">Comicritico</a>
+        </section> 
     </footer>
 
 </body>
