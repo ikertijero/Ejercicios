@@ -1,0 +1,134 @@
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+}
+
+
+:root{
+
+    --negro: #000;
+
+}
+
+body{
+    color:var(--negro);
+    text-align: justify;
+    font-size: 1rem;
+    font-weight:500;
+    line-height: 1.3rem;
+    text-align: justify;
+    box-sizing: border-box;
+}
+
+header{
+
+    background-color: springgreen;
+
+}
+h1{
+
+    text-align: center;
+    padding: 40px;
+
+}
+
+h2,h3{
+
+    padding: 20px;
+    
+}
+
+header nav{
+
+    width: 40%;
+    margin: auto;
+    max-width: 1024px;
+}    
+header nav ul{
+
+    display: flex;
+    justify-content: center;
+    
+    
+}
+header nav ul li{
+
+    list-style: none;
+    padding: 10px;
+}
+
+header nav ul li:hover{
+
+    background-color: teal;
+}
+
+a{
+    color:var(--negro) ;
+    text-decoration: none;
+}
+
+
+main{
+
+    background-color:whitesmoke;
+    max-width: 1024px;
+    margin: auto;
+    padding: 10px;
+    
+
+}
+p{
+    
+    padding: 10px;
+
+}
+
+main section div img{
+
+    padding: 10px;
+
+}
+
+.container-img{
+
+    display: flex;
+    justify-content: space-around;
+    
+    
+}
+
+img{
+
+    width: 350px;
+    height: 200px;
+
+
+}
+
+.container-enlaces{
+
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.container-enlaces ul{
+
+    
+    margin-left: 40px;
+}
+
+#volver{
+
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+footer{
+    display: flex;
+    background-color: springgreen;
+    height: 50px;
+}

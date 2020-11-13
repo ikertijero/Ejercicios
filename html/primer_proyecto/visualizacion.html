@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>visualizacion</title>
+</head>
+<body>
+    <h1>Visualizacion</h1>
+    <p>Vamos a ver las siguientes propiedades: <b>display</b>, <b>visibility</b>, <b>overflow</b> y <b>z-index</b></p>
+
+
+    <style>
+        #dv .container {
+            display: flex;
+            padding: 10px;
+            background: pink;
+
+        }
+        #dv .container div {
+            border: 1px solid grey;
+            width: 50%;
+        }
+
+        .box {
+            display: inline-block; /* algo hibrido entre block e inline, srive para poder dar height y width */
+            width: 25%;
+            margin: 10px;
+
+            background-color: orange;
+            font-size: 2rem;
+            text-align: center;
+        }
+    </style>
+    
+    <section id="dv">
+        <h2>Display y visibility</h2>
+        <div class="container">
+            <div>
+                <span class="box">1</span>
+                <span class="box">2</span>
+                <span class="box">3</span>
+                <span class="box">4</span>
+                <span class="box" style="visibility: hidden;">5</span>
+                <span class="box">6</span>
+                <span class="box">7</span>
+                <span class="box">8</span>
+                <span class="box">9</span>
+            </div> 
+            <div>
+                <span class="box">1</span>
+                <span class="box">2</span>
+                <span class="box">3</span>
+                <span class="box">4</span>
+                <span class="box" style="display: none;">5</span>
+                <span class="box">6</span>
+                <span class="box">7</span>
+                <span class="box">8</span>
+                <span class="box">9</span>
+            </div>               
+        </div>
+        
+
+    </section>
+
+
+    <style>
+
+        #ov div{
+            display: inline-block;
+            background-color: cornflowerblue;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+        }
+
+    </style>
+
+    <section id="ov">
+        <h2>Overflow</h2>
+        <div style="overflow: hidden;">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad impedit quae hic inventore delectus, numquam itaque sapiente illo nisi quidem necessitatibus! Quidem delectus dolore minus possimus repellat corporis dolorem optio.</p>
+        </div>
+        <div style="overflow: scroll;">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad impedit quae hic inventore delectus, numquam itaque sapiente illo nisi quidem necessitatibus! Quidem delectus dolore minus possimus repellat corporis dolorem optio.</p>
+        </div>
+        <div style="overflow-y:auto;">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad impedit quae hic inventore delectus, numquam itaque sapiente illo nisi quidem necessitatibus! Quidem delectus dolore minus possimus repellat corporis dolorem optio.</p>
+        </div>
+    </section>
+  
+</body>
+</html>

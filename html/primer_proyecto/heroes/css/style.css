@@ -1,10 +1,10 @@
-
-
 @import 'reset.css';
 
 
 /* varibales globales */
 :root {
+
+    --primary: #ed1d24;
     --azul: #003580;
     --blanco: #FFF;
     --negro: #000;
@@ -17,7 +17,8 @@
 
 body {
     color: var(--negro);
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
+    /* 16px */
     line-height: 1.3rem;
     font-weight: 400;
     font-family: Arial, Helvetica, sans-serif;
@@ -26,13 +27,22 @@ body {
 }
 
 
-h1 {   
+h1 {
+    color: var(--primary);
     text-align: center;
     text-transform: capitalize;
-    margin: 1rem 0;
+    margin: 40px;
+
 }
-h2, h3, h4, h5, h6 {
-    margin: 1rem 0;
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 3rem 0;
+    color: var(--primary);
+    text-align: center;
 }
 
 p {
@@ -40,74 +50,115 @@ p {
 }
 
 
-header, section, footer, .container-nav {
+section,
+.container-nav {
     max-width: 1024px;
     box-sizing: border-box;
-    margin: auto; /* centrar el contenido */
+    margin: auto;
+    /* centrar el contenido */
 }
 
 header {
-    background-color: pink;
-    
+
+    height: 100px;
+    padding: 10px;
+    background-color: #202020;
 }
 
 
 section {
-    background-color: #FFF;
+    background-color: ghostwhite;
     padding: 1rem;
-}
-
-footer {
-    background-color: var(--azul);
     display: flex;
+    justify-content: space-around;
+ 
+}
+#contenido article{
+
+    width: 40%;
+}
+#contenido img {
+
+    margin: auto;
+
 }
 
 
 
-#header-nav{
+img{
 
-    background-color: var(--azul);
+    width: 100%;
+    height: auto;
+}
+
+#header-nav {
+
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    background-color: var(--primary);
     color: #FFF;
     padding: 10px;
 
 }
 
-nav ul {
+nav#header-nav ul {
     display: flex;
     justify-content: space-between;
-}    
+}
 
-nav ul li {
-    list-style: none; /* quitar puntito */    
+nav#header-nav ul li {
+    list-style: none;
+    /* quitar puntito */
     width: 100%;
     text-align: center;
     padding: 5px 0;
-    
-} 
+
+}
+
 nav#header-nav a {
     color: #FFF;
 }
 
+nav#header-nav ul li:hover {
+    background-color: #6d0606;
+}
 
-a{
+a {
     text-decoration: none;
 }
 
- nav#header-nav ul li:hover {
-    background-color: #03A9F4;
-} 
+footer {
+    background-color: ghostwhite;
+    display: flex;
+    border-top: 3px solid darkgrey;
+}
+.container-footer{
 
-footer section{
-    background-color: var(--azul);
-    max-width: 100%;
+    max-width: 1024px;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
+
 }
 
-footer section a{
+footer div {
+    background-color: ghostwhite;
+    
+}
+
+footer div a {
+    padding: 5px;
     display: block;
-    color: #FFF;
+    color: gray;
 }
 
-.logo{
+
+.logo {
     width: 50px;
     height: 50px;
     border-radius: 50%;
