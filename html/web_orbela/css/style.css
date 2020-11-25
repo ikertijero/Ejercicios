@@ -1,0 +1,31 @@
+header{
+    background-color: green;
+}
+
+nav{
+    background-color: greenyellow;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{   
+    list-style: none;
+}
+.card{
+   padding: 5px;
+}
+
+
+.jumbotron{
+    color: white;
+    background-color: #343a40;
+    text-align:center;
+}
+
+
+footer{
+    
+    background-color: greenyellow;
+}

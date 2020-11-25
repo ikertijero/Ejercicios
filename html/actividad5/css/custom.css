@@ -1,0 +1,60 @@
+nav ul {
+
+    background-color: blue;
+}
+
+p {
+    font-size: 12px !important;
+    font-family: sans-serif;
+    
+}
+
+body {
+
+    background-color: lightgrey;
+}
+
+.contenedor-tabla{
+
+    display: flex;
+    justify-content: center;
+
+}
+th {
+
+    background-color: blue;
+    color: white;
+}
+
+tr:nth-child(even){
+	background-color: lightskyblue;
+}
+
+h1 {
+
+    color: darkblue;
+    font-size: 25px !important;
+}
+
+a:visited {
+
+    color: #B695C0 !important;
+}
+
+a:hover {
+
+    color: red !important;
+}
+
+a {
+
+    font-weight: bold;
+}
+
+.post-preview img{
+
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+}
